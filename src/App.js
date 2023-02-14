@@ -1,7 +1,8 @@
+import Home from './components/core/Home'
 
 const App = () => {
   return (
-    <h1>app</h1>
+    <Home />
   )
 }
 
