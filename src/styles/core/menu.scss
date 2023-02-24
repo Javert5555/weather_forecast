@@ -1,9 +1,12 @@
 .menu {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
-    height: 10vh;
+    height: 45px;
     color: #ffffff;
     background-color: #2b244d;
+    z-index: 1000;
 }
 
 .menu__container {
@@ -42,6 +45,7 @@
 
 .menu__week-day {
     margin: 0 10px 0 0;
+    font-weight: 800;
 }
 
 .menu__month {
