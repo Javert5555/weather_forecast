@@ -5,7 +5,12 @@
     width: 100vw;
     height: 45px;
     color: #ffffff;
-    background-color: #2b244d;
+    // background: -webkit-linear-gradient(90deg, #2e1b00,#6e0000,#000000);
+    // background: linear-gradient(90deg, #2e1b00,#6e0000,#000000);
+    // background: -webkit-linear-gradient(90deg, #31111c,#e4282a,#f3eb63,#d52827,#110a13);
+    // background: linear-gradient(90deg, #31111c,#e4282a,#f3eb63,#d52827,#110a13);
+    background: -webkit-linear-gradient(90deg, #2b2b31,#74020d);
+    background: linear-gradient(90deg, #2b2b31,#74020d);
     z-index: 1000;
 }
 
@@ -45,7 +50,7 @@
 
 .menu__week-day {
     margin: 0 10px 0 0;
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .menu__month {

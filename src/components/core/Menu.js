@@ -40,6 +40,8 @@ const Menu = () => {
         return () => clearInterval(getDateEverySecond)
     }, [])
 
+    console.log('render')
+    
     return (
         <header className='menu'>
             <div className='menu__container'>
