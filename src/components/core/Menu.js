@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../styles/core/menu.scss'
+import CastleIcon from '@mui/icons-material/Castle';
 
 const Menu = () => {
     const weekDays = [
@@ -45,9 +46,14 @@ const Menu = () => {
     return (
         <header className='menu'>
             <div className='menu__container'>
-                <h1 className="menu__text-logo">
-                    <a href='/'>Гиблое дело</a>
-                </h1>
+                <div style={{ display: 'flex'}}>
+                    <p className="menu__text-logo-name" style={{}}>
+                        <a href='/'><CastleIcon /></a>
+                    </p>
+                    <h1 className="menu__text-logo">
+                        <a href='/'>Прогноз погоды</a>
+                    </h1>
+                </div>
                 <div className='menu__date'>
                     <p className='menu__week-day'>{weekDays[numWeekDay]},</p>
                     <p className='menu__num-day'>{numDay}</p>
