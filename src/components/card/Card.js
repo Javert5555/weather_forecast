@@ -6,13 +6,13 @@ import TodayWeatherData from './TodayWeatherData'
 const Card = () => {
 
     const weekDays = [
-        'ВСК',
         'ПОН',
         'ВТН',
         'СРД',
         'ЧТВ',
         'ПТН',
-        'СУБ'
+        'СУБ',
+        'ВСК'
     ]
 
     return (
@@ -26,7 +26,7 @@ const Card = () => {
                     {weekDays.map((weekDay, index) => (
                         <DayWeather
                             key={`weekDay-${index}`}
-                            info = {weekDay}
+                            dayTitle = {weekDay}
                         />
                     ))}
                 </div>
