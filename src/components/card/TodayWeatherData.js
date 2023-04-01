@@ -1,14 +1,13 @@
 import { Fragment } from 'react'
 import '../../styles/card/today_weather_data.scss'
 
-
 const TodayWeatherData = ({ temperature, cloudiness, humidity, wind }) => {
 
     return (
             <div className='today-weather-data'>
                 <div className='today-weather-data__cloudiness-temperature'>
                     <div className='today-weather-data__temperature'>
-                        {Math.round(temperature)}
+                        {isNaN(temperature) ? temperature : Math.round(temperature)  }
                         <span className='today-weather-data__temperature-degree'>°</span>
                     </div>
                     <div className='today-weather-data__cloudiness'>{cloudiness}</div>

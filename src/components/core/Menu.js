@@ -4,6 +4,9 @@ import CastleIcon from '@mui/icons-material/Castle';
 import getWeatherForecastData from '../../weather-api/days-api'
 
 const Menu = ({ setCity, setTemperature, setCloudiness, setHumidity, setWind }) => {
+
+    let [inputCityName, setInputCityName] = useState('Krasnodar')
+
     const weekDays = [
         'Воскресенье',
         'Понедельник',
@@ -34,8 +37,13 @@ const Menu = ({ setCity, setTemperature, setCloudiness, setHumidity, setWind }) 
 
     const weatherForecastDataHandler = async (e) => {
         e.preventDefault()
-        const response = await getWeatherForecastData('Krasnodar')
+        const response = await getWeatherForecastData(inputCityName)
         // // const data = JSON.parse(response)
+
+        
+        if (response?.cod === '404') {
+            return
+        }
         
         setCity(response.name)
         setTemperature(response.main.temp)
@@ -80,6 +88,8 @@ const Menu = ({ setCity, setTemperature, setCloudiness, setHumidity, setWind }) 
                                 type='text'
                                 name='choose-city'
                                 placeholder="Cities"
+                                value={inputCityName}
+                                onChange={({ target }) => setInputCityName(target.value)}
                             />
                         </label>
                         <input
