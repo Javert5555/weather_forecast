@@ -1,16 +1,15 @@
-const getWeatherForecastData = async () => {
+const getWeatherForecastData = async (cityName) => {
+    try {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${process.env.OPENWEATHERMAP_API_KEY}&units=metric`, {
+            method: 'GET'
+        });
     
-    const response = await fetch('https://api.gismeteo.net/v2/weather/current/?latitude=54.35&longitude=52.52', {
-        method: 'GET',
-        headers: {
-            'Access-Control-Allow-Origin': 'http://localhost:3000/',
-            'X-Gismeteo-Token': '56b30cb255.3443075'
-        }
-    });
-
-    const weatherForecastData = await response.text()
-    
-    return(weatherForecastData)
+        const weatherForecastData = await response.json()
+        
+        return weatherForecastData  
+    } catch (error) {
+        return error
+    }
 }
 
 export default getWeatherForecastData
