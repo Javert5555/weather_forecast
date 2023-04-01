@@ -1,4 +1,3 @@
-import { Fragment } from 'react'
 import '../../styles/card/today_weather_data.scss'
 
 const TodayWeatherData = ({ temperature, cloudiness, humidity, wind }) => {

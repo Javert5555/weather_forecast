@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../styles/core/menu.scss'
 import CastleIcon from '@mui/icons-material/Castle';
-import getWeatherForecastData from '../../weather-api/days-api'
+import getWeatherForecastData from '../../weather-api/forecastWeatherApi'
 
 const Menu = ({ setCity, setTemperature, setCloudiness, setHumidity, setWind }) => {
 
@@ -37,20 +37,21 @@ const Menu = ({ setCity, setTemperature, setCloudiness, setHumidity, setWind }) 
 
     const weatherForecastDataHandler = async (e) => {
         e.preventDefault()
-        const response = await getWeatherForecastData(inputCityName)
-        // // const data = JSON.parse(response)
 
+        const response = await getWeatherForecastData(inputCityName)
         
-        if (response?.cod === '404') {
+        if (response.reqStatus === 'ok') {
+            setCity(response.cityName)
+            setTemperature(response.temp)
+            setCloudiness(response.description)
+            setHumidity(response.humidity)
+            setWind(response.windSpeed)
             return
         }
-        
-        setCity(response.name)
-        setTemperature(response.main.temp)
-        setCloudiness(response.weather[0].description)
-        setHumidity(response.main.humidity)
-        setWind(response.wind.speed)
-        console.log(response)
+
+        alert(response.message.toUpperCase())
+        return
+
     }
 
     useEffect(() => {
