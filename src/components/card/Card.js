@@ -3,7 +3,7 @@ import DayWeather from './DayWeatherInfo'
 import TodayWeatherCity from './TodayWeatherCity'
 import TodayWeatherData from './TodayWeatherData'
 
-const Card = () => {
+const Card = ({ city, temperature, cloudiness, humidity, wind }) => {
 
     const weekDays = [
         'ПОН',
@@ -19,8 +19,15 @@ const Card = () => {
         <section className='container'>
             <div className='card'>
                 <div className='card__upper-part'>
-                    <TodayWeatherData />
-                    <TodayWeatherCity />
+                    <TodayWeatherData
+                        temperature={temperature}
+                        cloudiness={cloudiness}
+                        humidity={humidity}
+                        wind={wind}
+                    />
+                    <TodayWeatherCity
+                        city={city}
+                    />
                 </div>
                 <div className='card__bottom-part'>
                     {weekDays.map((weekDay, index) => (
