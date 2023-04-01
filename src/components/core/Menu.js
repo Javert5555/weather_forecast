@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '../../styles/core/menu.scss'
 import CastleIcon from '@mui/icons-material/Castle';
+import getWeatherForecastData from '../../weather-api/days-api'
 
-const Menu = () => {
+const Menu = ({ setCity, setTemperature, setCloudiness, setHumidity, setWind }) => {
     const weekDays = [
         'Воскресенье',
         'Понедельник',
@@ -31,6 +32,19 @@ const Menu = () => {
     let [numWeekDay, setNumWeekDay] = useState(time.getDay())
     let [numMonth, setNumMonth] = useState(time.getMonth())
 
+    const weatherForecastDataHandler = async (e) => {
+        e.preventDefault()
+        const response = await getWeatherForecastData('Krasnodar')
+        // // const data = JSON.parse(response)
+        
+        setCity(response.name)
+        setTemperature(response.main.temp)
+        setCloudiness(response.weather[0].description)
+        setHumidity(response.main.humidity)
+        setWind(response.wind.speed)
+        console.log(response)
+    }
+
     useEffect(() => {
         const getDateEverySecond = setInterval(() => {
             let timeNow = new Date()
@@ -40,14 +54,12 @@ const Menu = () => {
         }, 1000)
         return () => clearInterval(getDateEverySecond)
     }, [])
-
-    console.log('render')
     
     return (
         <header className='menu'>
             <div className='menu__container'>
-                <div style={{ display: 'flex'}}>
-                    <p className="menu__text-logo-name" style={{}}>
+                <div className="menu__text-logo-and-name">
+                    <p className="menu__text-logo-name">
                         <a href='/'><CastleIcon /></a>
                     </p>
                     <h1 className="menu__text-logo">
@@ -58,6 +70,25 @@ const Menu = () => {
                     <p className='menu__week-day'>{weekDays[numWeekDay]},</p>
                     <p className='menu__num-day'>{numDay}</p>
                     <p className='menu__month'>{months[numMonth]}</p>
+                </div>
+                <div className='menu__choose-city-container'>
+                    <form className='menu__form'>
+                        <label className='menu__input-label' htmlFor="choose-city">
+                            <input
+                                id='choose-city'
+                                className='menu__input'
+                                type='text'
+                                name='choose-city'
+                                placeholder="Cities"
+                            />
+                        </label>
+                        <input
+                            className='menu__submit btn'
+                            type='submit'
+                            value='Поиск'
+                            onClick={weatherForecastDataHandler}
+                        />
+                    </form>
                 </div>
             </div>
         </header>
