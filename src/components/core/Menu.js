@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../styles/core/menu.scss'
 import CastleIcon from '@mui/icons-material/Castle';
-import getWeatherForecastData from '../../weather-api/forecastWeatherApi'
+import { getWeatherForecastData, getFiveDaysWeatherForecastData } from '../../weather-api/forecastWeatherApi'
 
 const Menu = ({ setCity, setTemperature, setCloudiness, setHumidity, setWind }) => {
 
@@ -55,6 +55,7 @@ const Menu = ({ setCity, setTemperature, setCloudiness, setHumidity, setWind }) 
     }
 
     useEffect(() => {
+        // console.log(getFiveDaysWeatherForecastData('Krasnodar'))
         const getDateEverySecond = setInterval(() => {
             let timeNow = new Date()
             setNumDay(timeNow.getDate())

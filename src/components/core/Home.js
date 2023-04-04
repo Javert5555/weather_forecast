@@ -3,11 +3,11 @@ import Card from '../card/Card'
 import Menu from './Menu'
 
 const Home = () => {
-    let [city, setCity] = useState('City')
-    let [temperature, setTemperature] = useState('temperature')
-    let [cloudiness, setCloudiness] = useState('cloudiness')
-    let [humidity, setHumidity] = useState('humidity')
-    let [wind, setWind] = useState('wind')
+    let [city, setCity] = useState('Город')
+    let [temperature, setTemperature] = useState('Температура')
+    let [cloudiness, setCloudiness] = useState('Облачность')
+    let [humidity, setHumidity] = useState('Влажность')
+    let [wind, setWind] = useState('Ветер')
 
     // useEffect(() => {
     //     console.log(weatherForecastData)
